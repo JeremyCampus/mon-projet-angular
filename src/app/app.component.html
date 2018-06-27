@@ -1,6 +1,4 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<!--The content below is only a placeholder and can be replaced.-->
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <div class="container">
     <div class="row">
@@ -27,11 +25,12 @@
 
         <p>Mis à jour : {{ lastUpdate | async  | date: 'short' }}</p>
         <ul class="list-group">
-          <app-appareil  *ngFor="let machin of appareils" [appareilName]="machin.name" [appareilStatus]="machin.status"></app-appareil>
-          <!-- <app-appareil  *ngFor="let appareil of appareils";   let i = index [indexOfAppareil]="i" [appareilName]="appareil.name" [appareilStatus]="appareil.status"></app-appareil> -->
-
+            <app-appareil  *ngFor="let appareil of appareils; let i = index"
+                           [appareilName]="appareil.name"
+                           [appareilStatus]="appareil.status"
+                           [index]="i"></app-appareil>
         </ul>
-        <button class="btn btn-success"
+         <button class="btn btn-success"
                 [disabled]="!isAuth"
                 (click)="onAllumer()">Tout allumer</button>
 

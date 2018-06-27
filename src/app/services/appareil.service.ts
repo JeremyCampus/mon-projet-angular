@@ -1,4 +1,5 @@
 export class AppareilService{
+  
   appareils = [
     {
       name: 'Machine à laver',
@@ -28,11 +29,19 @@ export class AppareilService{
     }
   }
 
-  // switchOnOne(){
-  //   this.appareils[index].status = 'allumé';
-  // }
-  //
-  // switchOffOne(){
-  //   this.appareils[index].status = 'éteint';
-  // }
+  switchOnOne(i: number) {
+
+    if(this.appareils[i])
+    {
+      console.log("HELLO ON");
+    }
+      this.appareils[i].status = 'allumé';
+  }
+
+  switchOffOne(i: number) {
+      this.appareils[i].status = 'éteint';
+      console.log("HELLO OFF");
+  }
+
+
 }

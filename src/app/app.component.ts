@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {AppareilService} from './services/appareil.service'
+
 
 
 @Component({
@@ -10,7 +11,17 @@ import {AppareilService} from './services/appareil.service'
 export class AppComponent implements OnInit {
   isAuth = false;
 
-   appareils:any[];
+ appareils: any[];
+
+  lastUpdate = new Promise((resolve, reject) => {
+    const date = new Date();
+    setTimeout(
+      () => {
+        resolve(date);
+      }, 2000
+    );
+  });
+
   constructor(private appareilService: AppareilService) {
       setTimeout(
         () => {
@@ -23,14 +34,6 @@ export class AppComponent implements OnInit {
       this.appareils = this.appareilService.appareils;
     }
 
-    lastUpdate = new Promise((resolve, reject) => {
-    const date = new Date();
-    setTimeout(
-      () => {
-        resolve(date);
-      }, 2000
-    );
-  });
 
   onAllumer(){
     this.appareilService.switchOnAll();

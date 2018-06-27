@@ -8,12 +8,12 @@ import {AppareilService} from "../services/appareil.service";
 })
 export class AppareilComponent implements OnInit {
 
-@Input() appareilName: string;
-@Input() appareilStatus:string;
-// @Input() indexOfAppareil:number;
+  @Input() appareilName: string;
+  @Input() appareilStatus: string;
+  @Input() index: number;
 
-constructor() { }
-// constructor(private appareilService AppareilService) { }
+// constructor() { }
+constructor(private appareilService: AppareilService) { }
 
   ngOnInit() {
   }
@@ -30,15 +30,13 @@ constructor() { }
     }
   }
 
-  // onSwitchOn()
-  // {
-  //   this.appareilService.switchOnOne(this.indexOfAppareil);
-  // }
-  //
-  // onSwitchOff()
-  // {
-  //   this.appareilService.switchOffOne(this.indexOfAppareil);
-  // }
+  onSwitch() {
+    if(this.appareilStatus === 'allumé') {
+      this.appareilService.switchOffOne(this.index);
+    } else if(this.appareilStatus === 'éteint') {
+      this.appareilService.switchOnOne(this.index);
+    }
+}
 
 
 
