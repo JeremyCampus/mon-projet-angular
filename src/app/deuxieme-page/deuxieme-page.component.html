@@ -1,0 +1,7 @@
+<p>Mis à jour : {{ lastUpdate | async  | date: 'short' }}</p>
+<ul class="list-group">
+  <app-appareil  *ngFor="let machin of appareils" [appareilName]="machin.name" [appareilStatus]="machin.status"></app-appareil>
+</ul>
+<button class="btn btn-success"
+        [disabled]="!isAuth"
+        (click)="onAllume()">Tout allumer</button>
